@@ -1,9 +1,11 @@
 package com.sparta.admin.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Getter
 @NoArgsConstructor
 @Table(name = "users")
 public class User {
@@ -24,4 +26,11 @@ public class User {
     @Enumerated(value = EnumType.STRING)
     @Column(nullable = false)
     private UserRoleEnum role;
+
+    public User(String email, String password, String department, UserRoleEnum role) {
+        this.email = email;
+        this.password = password;
+        this.department = department;
+        this.role = role;
+    }
 }
