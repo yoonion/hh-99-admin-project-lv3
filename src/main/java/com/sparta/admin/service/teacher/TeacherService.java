@@ -1,4 +1,4 @@
-package com.sparta.admin.service;
+package com.sparta.admin.service.teacher;
 
 import com.sparta.admin.dto.teacher.TeacherRegisterRequestDto;
 import com.sparta.admin.dto.teacher.TeacherRegisterResponseDto;

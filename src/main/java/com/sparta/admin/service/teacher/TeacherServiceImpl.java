@@ -1,4 +1,4 @@
-package com.sparta.admin.service;
+package com.sparta.admin.service.teacher;
 
 import com.sparta.admin.dto.teacher.TeacherRegisterResponseDto;
 import com.sparta.admin.dto.teacher.TeacherRegisterRequestDto;
@@ -17,6 +17,7 @@ public class TeacherServiceImpl implements TeacherService {
 
     private final TeacherRepository teacherRepository;
 
+    @Override
     @Transactional
     public TeacherRegisterResponseDto registerTeacher(TeacherRegisterRequestDto requestDto) {
         Teacher teacher = new Teacher(requestDto);
@@ -25,6 +26,7 @@ public class TeacherServiceImpl implements TeacherService {
         return new TeacherRegisterResponseDto(teacher);
     }
 
+    @Override
     @Transactional
     public TeacherUpdateResponseDto updateTeacher(Long id, TeacherUpdateRequestDto requestDto) {
         Teacher teacher = teacherRepository.findById(id)

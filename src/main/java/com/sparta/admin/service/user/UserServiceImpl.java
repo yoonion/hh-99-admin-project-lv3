@@ -1,4 +1,4 @@
-package com.sparta.admin.service;
+package com.sparta.admin.service.user;
 
 import com.sparta.admin.dto.user.UserSignUpRequestDto;
 import com.sparta.admin.dto.user.UserSignUpResponseDto;
@@ -18,6 +18,7 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
+    @Override
     @Transactional
     public UserSignUpResponseDto signUp(UserSignUpRequestDto requestDto) {
         String email = requestDto.getEmail();

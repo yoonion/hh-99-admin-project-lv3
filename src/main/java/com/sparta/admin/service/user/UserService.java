@@ -1,4 +1,4 @@
-package com.sparta.admin.service;
+package com.sparta.admin.service.user;
 
 import com.sparta.admin.dto.user.UserSignUpRequestDto;
 import com.sparta.admin.dto.user.UserSignUpResponseDto;

@@ -2,15 +2,11 @@ package com.sparta.admin.controller;
 
 import com.sparta.admin.dto.user.UserSignUpRequestDto;
 import com.sparta.admin.dto.user.UserSignUpResponseDto;
-import com.sparta.admin.entity.User;
-import com.sparta.admin.security.UserDetailsImpl;
-import com.sparta.admin.service.UserService;
-import com.sparta.admin.service.UserServiceImpl;
+import com.sparta.admin.service.user.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
