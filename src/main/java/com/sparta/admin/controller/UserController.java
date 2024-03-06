@@ -3,16 +3,17 @@ package com.sparta.admin.controller;
 import com.sparta.admin.dto.user.UserLoginRequestDto;
 import com.sparta.admin.dto.user.UserSignUpRequestDto;
 import com.sparta.admin.dto.user.UserSignUpResponseDto;
+import com.sparta.admin.entity.User;
+import com.sparta.admin.security.UserDetailsImpl;
 import com.sparta.admin.service.UserService;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -28,10 +29,18 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(userSignUpResponseDto);
     }
 
-    @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody UserLoginRequestDto requestDto, HttpServletResponse response) {
-        userService.login(requestDto, response);
+//    @PostMapping("/login")
+//    public ResponseEntity<?> login(@RequestBody UserLoginRequestDto requestDto, HttpServletResponse response) {
+//        userService.login(requestDto, response);
+//
+//        return ResponseEntity.status(HttpStatus.OK).body("로그인 성공");
+//    }
 
-        return ResponseEntity.status(HttpStatus.OK).body("로그인 성공");
+    @GetMapping("/test")
+    public String test(@AuthenticationPrincipal UserDetailsImpl userDetails) {
+
+        User user = userDetails.getUser(); // Authentication의 Principal
+
+        return user.getEmail();
     }
 }
