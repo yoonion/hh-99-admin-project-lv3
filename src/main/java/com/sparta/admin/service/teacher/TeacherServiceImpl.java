@@ -1,9 +1,6 @@
 package com.sparta.admin.service.teacher;
 
-import com.sparta.admin.dto.teacher.TeacherRegisterResponseDto;
-import com.sparta.admin.dto.teacher.TeacherRegisterRequestDto;
-import com.sparta.admin.dto.teacher.TeacherUpdateRequestDto;
-import com.sparta.admin.dto.teacher.TeacherUpdateResponseDto;
+import com.sparta.admin.dto.teacher.*;
 import com.sparta.admin.entity.Teacher;
 import com.sparta.admin.repository.TeacherRepository;
 import lombok.RequiredArgsConstructor;
@@ -34,5 +31,13 @@ public class TeacherServiceImpl implements TeacherService {
 
         teacher.update(requestDto); // 강사 정보 수정
         return new TeacherUpdateResponseDto(teacher);
+    }
+
+    @Override
+    public TeacherInfoResponseDto getTeacher(Long id) {
+        Teacher teacher = teacherRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("선택한 강사의 정보가 없습니다."));
+
+        return new TeacherInfoResponseDto(teacher);
     }
 }

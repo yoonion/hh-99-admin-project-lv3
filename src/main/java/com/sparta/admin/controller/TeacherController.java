@@ -26,12 +26,20 @@ public class TeacherController {
         return ResponseEntity.status(HttpStatus.OK).body(responseDto);
     }
 
-    @Secured(UserRoleEnum.Authority.MANAGER) // 관리자용
+    @Secured(UserRoleEnum.Authority.MANAGER)
     @PutMapping("/{id}")
     public ResponseEntity<TeacherUpdateResponseDto> updateTeacher(
             @RequestBody @Valid TeacherUpdateRequestDto requestDto, @PathVariable Long id
     ) {
         TeacherUpdateResponseDto responseDto = teacherService.updateTeacher(id, requestDto);
+
+        return ResponseEntity.status(HttpStatus.OK).body(responseDto);
+    }
+
+    @Secured(UserRoleEnum.Authority.MANAGER)
+    @GetMapping("/{id}")
+    public ResponseEntity<TeacherInfoResponseDto> getTeacher(@PathVariable Long id) {
+        TeacherInfoResponseDto responseDto = teacherService.getTeacher(id);
 
         return ResponseEntity.status(HttpStatus.OK).body(responseDto);
     }

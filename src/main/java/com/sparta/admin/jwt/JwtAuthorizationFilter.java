@@ -1,6 +1,6 @@
 package com.sparta.admin.jwt;
 
-import com.sparta.admin.security.UserDetailsServiceImpl;
+import com.sparta.admin.entity.security.UserDetailsServiceImpl;
 import io.jsonwebtoken.Claims;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

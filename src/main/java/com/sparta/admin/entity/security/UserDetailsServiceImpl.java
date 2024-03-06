@@ -1,4 +1,4 @@
-package com.sparta.admin.security;
+package com.sparta.admin.entity.security;
 
 import com.sparta.admin.entity.User;
 import com.sparta.admin.repository.UserRepository;

@@ -3,7 +3,7 @@ package com.sparta.admin.jwt;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sparta.admin.dto.user.UserLoginRequestDto;
 import com.sparta.admin.entity.UserRoleEnum;
-import com.sparta.admin.security.UserDetailsImpl;
+import com.sparta.admin.entity.security.UserDetailsImpl;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
