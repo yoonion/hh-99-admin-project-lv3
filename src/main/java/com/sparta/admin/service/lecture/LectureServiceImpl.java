@@ -1,9 +1,6 @@
 package com.sparta.admin.service.lecture;
 
-import com.sparta.admin.dto.lecture.LectureRegisterRequestDto;
-import com.sparta.admin.dto.lecture.LectureRegisterResponseDto;
-import com.sparta.admin.dto.lecture.LectureUpdateRequestDto;
-import com.sparta.admin.dto.lecture.LectureUpdateResponseDto;
+import com.sparta.admin.dto.lecture.*;
 import com.sparta.admin.entity.Lecture;
 import com.sparta.admin.entity.Teacher;
 import com.sparta.admin.repository.LectureRepository;
@@ -44,5 +41,13 @@ public class LectureServiceImpl implements LectureService {
         lecture.update(requestDto);
 
         return new LectureUpdateResponseDto(lecture);
+    }
+
+    @Override
+    public LectureInfoResponseDto getLecture(Long id) {
+        Lecture lecture = lectureRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 강의 정보가 존재하지 않습니다."));
+
+        return new LectureInfoResponseDto(lecture);
     }
 }

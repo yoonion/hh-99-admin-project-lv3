@@ -5,10 +5,10 @@ import lombok.Getter;
 
 @Getter
 public class LectureUpdateResponseDto {
-    private String title;
-    private int price;
-    private String introduction;
-    private String category;
+    private final String title;
+    private final int price;
+    private final String introduction;
+    private final String category;
 
     public LectureUpdateResponseDto(Lecture lecture) {
         this.title = lecture.getTitle();

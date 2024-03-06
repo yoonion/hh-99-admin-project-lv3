@@ -8,12 +8,12 @@ import lombok.Getter;
 @Getter
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class TeacherInfoResponseDto {
-    private Long id;
-    private String name;
-    private String career;
-    private String company;
-    private String phoneNumber;
-    private String introduction;
+    private final Long id;
+    private final String name;
+    private final String career;
+    private final String company;
+    private final String phoneNumber;
+    private final String introduction;
 
     public TeacherInfoResponseDto(Teacher teacher) {
         this.id = teacher.getId();

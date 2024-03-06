@@ -22,12 +22,4 @@ public class UserController {
 
         return ResponseEntity.status(HttpStatus.OK).body(userSignUpResponseDto);
     }
-
-//    @PostMapping("/login")
-//    public ResponseEntity<?> login(@RequestBody UserLoginRequestDto requestDto, HttpServletResponse response) {
-//        userService.login(requestDto, response);
-//
-//        return ResponseEntity.status(HttpStatus.OK).body("로그인 성공");
-//    }
-
 }

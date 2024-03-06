@@ -8,11 +8,11 @@ import lombok.Getter;
 @Getter
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class TeacherUpdateResponseDto {
-    private String name;
-    private String career;
-    private String company;
-    private String phoneNumber;
-    private String introduction;
+    private final String name;
+    private final String career;
+    private final String company;
+    private final String phoneNumber;
+    private final String introduction;
 
     public TeacherUpdateResponseDto(Teacher teacher) {
         this.name = teacher.getName();

@@ -1,9 +1,6 @@
 package com.sparta.admin.controller;
 
-import com.sparta.admin.dto.lecture.LectureRegisterRequestDto;
-import com.sparta.admin.dto.lecture.LectureRegisterResponseDto;
-import com.sparta.admin.dto.lecture.LectureUpdateRequestDto;
-import com.sparta.admin.dto.lecture.LectureUpdateResponseDto;
+import com.sparta.admin.dto.lecture.*;
 import com.sparta.admin.entity.UserRoleEnum;
 import com.sparta.admin.service.lecture.LectureService;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +16,7 @@ public class LectureController {
 
     private final LectureService lectureService;
 
-    @Secured(UserRoleEnum.Authority.MANAGER) // 관리자용
+    @Secured(UserRoleEnum.Authority.MANAGER)
     @PostMapping
     public ResponseEntity<LectureRegisterResponseDto> registerLecture(@RequestBody LectureRegisterRequestDto requestDto) {
         LectureRegisterResponseDto responseDto = lectureService.registerLecture(requestDto);
@@ -33,6 +30,13 @@ public class LectureController {
             @PathVariable Long id, @RequestBody LectureUpdateRequestDto requestDto
     ) {
         LectureUpdateResponseDto responseDto = lectureService.updateLecture(id, requestDto);
+
+        return ResponseEntity.status(HttpStatus.OK).body(responseDto);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<LectureInfoResponseDto> getLecture(@PathVariable Long id) {
+        LectureInfoResponseDto responseDto = lectureService.getLecture(id);
 
         return ResponseEntity.status(HttpStatus.OK).body(responseDto);
     }

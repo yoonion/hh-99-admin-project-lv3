@@ -18,7 +18,7 @@ public class TeacherController {
 
     private final TeacherService teacherService;
 
-    @Secured(UserRoleEnum.Authority.MANAGER) // 관리자용
+    @Secured(UserRoleEnum.Authority.MANAGER)
     @PostMapping
     public ResponseEntity<TeacherRegisterResponseDto> registerTeacher(@RequestBody @Valid TeacherRegisterRequestDto requestDto) {
         TeacherRegisterResponseDto responseDto = teacherService.registerTeacher(requestDto);
@@ -36,7 +36,6 @@ public class TeacherController {
         return ResponseEntity.status(HttpStatus.OK).body(responseDto);
     }
 
-    @Secured(UserRoleEnum.Authority.MANAGER)
     @GetMapping("/{id}")
     public ResponseEntity<TeacherInfoResponseDto> getTeacher(@PathVariable Long id) {
         TeacherInfoResponseDto responseDto = teacherService.getTeacher(id);
