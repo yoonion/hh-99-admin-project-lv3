@@ -1,5 +1,6 @@
 package com.sparta.admin.controller;
 
+import com.sparta.admin.dto.user.UserLoginRequestDto;
 import com.sparta.admin.dto.user.UserSignUpRequestDto;
 import com.sparta.admin.dto.user.UserSignUpResponseDto;
 import com.sparta.admin.service.UserService;
@@ -28,9 +29,9 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody UserSignUpRequestDto requestDto, HttpServletResponse response) {
+    public ResponseEntity<?> login(@RequestBody UserLoginRequestDto requestDto, HttpServletResponse response) {
         userService.login(requestDto, response);
 
-        return ResponseEntity.status(HttpStatus.OK).body(null);
+        return ResponseEntity.status(HttpStatus.OK).body("로그인 성공");
     }
 }

@@ -1,5 +1,6 @@
 package com.sparta.admin.service;
 
+import com.sparta.admin.dto.user.UserLoginRequestDto;
 import com.sparta.admin.dto.user.UserSignUpRequestDto;
 import com.sparta.admin.dto.user.UserSignUpResponseDto;
 import com.sparta.admin.entity.User;
@@ -38,7 +39,7 @@ public class UserService {
         return new UserSignUpResponseDto(user);
     }
 
-    public void login(UserSignUpRequestDto requestDto, HttpServletResponse response) {
+    public void login(UserLoginRequestDto requestDto, HttpServletResponse response) {
         String email = requestDto.getEmail();
         String password = requestDto.getPassword();
 
@@ -47,7 +48,7 @@ public class UserService {
                 .orElseThrow(() -> new IllegalArgumentException("회원 정보가 없습니다."));
 
         // 비밀번호 확인
-        if (!passwordEncoder.matches(password, passwordEncoder.encode(password))) {
+        if (!passwordEncoder.matches(password, user.getPassword())) {
             throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
         }
 
