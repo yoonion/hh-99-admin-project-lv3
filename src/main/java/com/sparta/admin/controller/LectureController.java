@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/lectures")
@@ -39,5 +41,12 @@ public class LectureController {
         LectureInfoResponseDto responseDto = lectureService.getLecture(id);
 
         return ResponseEntity.status(HttpStatus.OK).body(responseDto);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<LectureInfoResponseDto>> getLecturesByCategory(@RequestParam String category) {
+        List<LectureInfoResponseDto> responseDtos = lectureService.getLecturesByCategory(category);
+
+        return ResponseEntity.status(HttpStatus.OK).body(responseDtos);
     }
 }

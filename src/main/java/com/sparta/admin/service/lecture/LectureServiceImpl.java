@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Optional;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -49,5 +49,13 @@ public class LectureServiceImpl implements LectureService {
                 .orElseThrow(() -> new IllegalArgumentException("해당 강의 정보가 존재하지 않습니다."));
 
         return new LectureInfoResponseDto(lecture);
+    }
+
+    @Override
+    public List<LectureInfoResponseDto> getLecturesByCategory(String category) {
+        return lectureRepository.findAllByCategoryOrderByCreatedAtDesc(category)
+                .stream()
+                .map(LectureInfoResponseDto::new)
+                .toList();
     }
 }

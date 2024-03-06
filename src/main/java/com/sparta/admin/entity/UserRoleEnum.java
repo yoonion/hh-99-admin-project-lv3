@@ -5,8 +5,8 @@ import lombok.Getter;
 @Getter
 public enum UserRoleEnum {
 
-    MANAGER(Authority.MANAGER),  // 관리자 권한
-    STAFF(Authority.STAFF);  // 사용자 권한
+    MANAGER(Authority.MANAGER),
+    STAFF(Authority.STAFF);
 
     private final String authority;
 
