@@ -5,6 +5,7 @@ import com.sparta.admin.dto.user.UserSignUpResponseDto;
 import com.sparta.admin.entity.User;
 import com.sparta.admin.security.UserDetailsImpl;
 import com.sparta.admin.service.UserService;
+import com.sparta.admin.service.UserServiceImpl;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -33,12 +34,4 @@ public class UserController {
 //        return ResponseEntity.status(HttpStatus.OK).body("로그인 성공");
 //    }
 
-    @GetMapping("/test")
-    public String test(@AuthenticationPrincipal UserDetailsImpl userDetails) {
-
-        User user = userDetails.getUser(); // Authentication의 Principal
-
-
-        return user.getRole().toString();
-    }
 }
