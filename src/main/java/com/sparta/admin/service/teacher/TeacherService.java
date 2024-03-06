@@ -2,6 +2,8 @@ package com.sparta.admin.service.teacher;
 
 import com.sparta.admin.dto.teacher.*;
 
+import java.util.List;
+
 public interface TeacherService {
     TeacherRegisterResponseDto registerTeacher(TeacherRegisterRequestDto requestDto);
 
@@ -9,4 +11,5 @@ public interface TeacherService {
 
     TeacherInfoResponseDto getTeacher(Long id);
 
+    List<TeacherLecturesResponseDto> getTeacherLectures(Long id);
 }

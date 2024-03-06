@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/teachers")
@@ -41,5 +43,12 @@ public class TeacherController {
         TeacherInfoResponseDto responseDto = teacherService.getTeacher(id);
 
         return ResponseEntity.status(HttpStatus.OK).body(responseDto);
+    }
+
+    @GetMapping("/{id}/lectures")
+    public ResponseEntity<List<TeacherLecturesResponseDto>> getTeacherLectures(@PathVariable Long id) {
+        List<TeacherLecturesResponseDto> teacherLectures = teacherService.getTeacherLectures(id);
+
+        return ResponseEntity.status(HttpStatus.OK).body(teacherLectures);
     }
 }
