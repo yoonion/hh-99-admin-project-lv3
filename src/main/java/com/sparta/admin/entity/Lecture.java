@@ -1,6 +1,7 @@
 package com.sparta.admin.entity;
 
 import com.sparta.admin.dto.lecture.LectureRegisterRequestDto;
+import com.sparta.admin.dto.lecture.LectureUpdateRequestDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -34,6 +35,13 @@ public class Lecture {
 
     public Lecture(Teacher teacher, LectureRegisterRequestDto requestDto) {
         this.teacher = teacher;
+        this.title = requestDto.getTitle();
+        this.price = requestDto.getPrice();
+        this.introduction = requestDto.getIntroduction();
+        this.category = requestDto.getCategory();
+    }
+
+    public void update(LectureUpdateRequestDto requestDto) {
         this.title = requestDto.getTitle();
         this.price = requestDto.getPrice();
         this.introduction = requestDto.getIntroduction();
