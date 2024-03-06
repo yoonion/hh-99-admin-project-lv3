@@ -1,14 +1,11 @@
 package com.sparta.admin.controller;
 
-import com.sparta.admin.dto.user.UserLoginRequestDto;
 import com.sparta.admin.dto.user.UserSignUpRequestDto;
 import com.sparta.admin.dto.user.UserSignUpResponseDto;
 import com.sparta.admin.entity.User;
 import com.sparta.admin.security.UserDetailsImpl;
 import com.sparta.admin.service.UserService;
-import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,6 +38,7 @@ public class UserController {
 
         User user = userDetails.getUser(); // Authentication의 Principal
 
-        return user.getEmail();
+
+        return user.getRole().toString();
     }
 }

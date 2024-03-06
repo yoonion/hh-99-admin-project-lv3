@@ -1,13 +1,10 @@
 package com.sparta.admin.service;
 
-import com.sparta.admin.dto.user.UserLoginRequestDto;
 import com.sparta.admin.dto.user.UserSignUpRequestDto;
 import com.sparta.admin.dto.user.UserSignUpResponseDto;
 import com.sparta.admin.entity.User;
 import com.sparta.admin.entity.UserRoleEnum;
-import com.sparta.admin.jwt.JwtUtils;
 import com.sparta.admin.repository.UserRepository;
-import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -18,7 +15,6 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-    private final JwtUtils jwtUtils;
 
     public UserSignUpResponseDto signUp(UserSignUpRequestDto requestDto) {
         String email = requestDto.getEmail();
