@@ -14,4 +14,5 @@ public interface LectureService {
 
     List<LectureInfoResponseDto> getLecturesByCategory(LectureCategoryEnum category);
 
+    Long deleteLecture(Long id);
 }

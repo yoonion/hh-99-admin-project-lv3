@@ -59,4 +59,11 @@ public class LectureServiceImpl implements LectureService {
                 .map(LectureInfoResponseDto::new)
                 .toList();
     }
+
+    @Override
+    @Transactional
+    public Long deleteLecture(Long id) {
+        lectureRepository.deleteById(id);
+        return id;
+    }
 }

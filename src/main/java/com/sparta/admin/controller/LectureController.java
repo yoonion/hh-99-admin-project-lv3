@@ -52,4 +52,13 @@ public class LectureController {
 
         return ResponseEntity.status(HttpStatus.OK).body(responseDtos);
     }
+
+    @Secured(UserRoleEnum.Authority.MANAGER)
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteLecture(@PathVariable Long id) {
+        lectureService.deleteLecture(id);
+        LectureDeleteResponseDto responseDto = new LectureDeleteResponseDto(id);
+
+        return ResponseEntity.status(HttpStatus.OK).body(responseDto);
+    }
 }
