@@ -9,6 +9,8 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -54,6 +56,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         }
     }
 
+    // 인증 성공시 실행 로직
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
         log.info("로그인 성공 및 JWT 생성");
@@ -63,28 +66,16 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         String token = jwtUtils.createToken(username, role);
         jwtUtils.addJwtToCookie(token, response);
 
-        // 성공 response 반환
-        response.setStatus(HttpServletResponse.SC_OK);
-        response.setContentType("application/json;charset=UTF-8");
-
-        String successMessage = "{\"message\": \"로그인 인증에 성공했습니다.\"}";
-        PrintWriter writer = response.getWriter();
-        writer.print(successMessage);
-        writer.flush();
+        // 결과 클라이언트에게 응답 반환
+        jwtUtils.AuthResultResponseBody(response, HttpServletResponse.SC_OK, "로그인 인증에 성공했습니다.");
     }
 
+    // 인증 실패시 실행 로직
     @Override
     protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response, AuthenticationException failed) throws IOException, ServletException {
         log.info("로그인 실패");
 
-        // 로그인 실패 response 반환
-        response.setStatus(401);
-        response.setStatus(HttpServletResponse.SC_OK);
-        response.setContentType("application/json;charset=UTF-8");
-
-        String failMessage = "{\"message\": \"로그인 인증에 실패 했습니다. 아이디와 비밀번호를 확인해주세요\"}";
-        PrintWriter writer = response.getWriter();
-        writer.print(failMessage);
-        writer.flush();
+        // 결과 클라이언트에게 응답 반환
+        jwtUtils.AuthResultResponseBody(response, HttpServletResponse.SC_UNAUTHORIZED, "로그인 인증에 실패했습니다. 아이디와 비밀번호를 확인 해주세요.");
     }
 }

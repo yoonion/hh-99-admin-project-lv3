@@ -1,5 +1,6 @@
 package com.sparta.admin.jwt;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sparta.admin.entity.UserRoleEnum;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
@@ -10,9 +11,12 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
@@ -118,5 +122,17 @@ public class JwtUtils {
             }
         }
         return null;
+    }
+
+    // JWT 인증 및 인가 실패시 response 메시지 filter -> 클라이언트에게 반환 - jwt 패키지 내에서만 사용
+    void AuthResultResponseBody(HttpServletResponse response, int httpServletResponseCode, String resultMessage) throws IOException {
+        response.setStatus(httpServletResponseCode);
+        response.setContentType("application/json;charset=UTF-8");
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        String jsonResponse = objectMapper.writeValueAsString(new AuthResultResponseDto(httpServletResponseCode, resultMessage));
+        PrintWriter writer = response.getWriter();
+        writer.print(jsonResponse);
+        writer.flush();
     }
 }

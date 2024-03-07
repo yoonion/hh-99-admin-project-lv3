@@ -7,6 +7,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
@@ -31,9 +32,9 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
     }
 
     @Override
-    protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
-        String tokenValue = jwtUtils.getTokenFromRequest(req);
+        String tokenValue = jwtUtils.getTokenFromRequest(request);
 
         if (StringUtils.hasText(tokenValue)) {
             // JWT 토큰 substring
@@ -42,6 +43,7 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
 
             if (!jwtUtils.validateToken(tokenValue)) {
                 log.error("Token Error");
+                response.setStatus(HttpStatus.UNAUTHORIZED.value()); // 인가 실패 response
                 return;
             }
 
@@ -55,7 +57,7 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
             }
         }
 
-        filterChain.doFilter(req, res);
+        filterChain.doFilter(request, response);
     }
 
     // 인증 처리
@@ -72,4 +74,6 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
         UserDetails userDetails = userDetailsService.loadUserByUsername(username);
         return new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
     }
+
+
 }
