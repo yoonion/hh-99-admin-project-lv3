@@ -1,6 +1,7 @@
 package com.sparta.admin.controller;
 
 import com.sparta.admin.dto.lecture.*;
+import com.sparta.admin.entity.LectureCategoryEnum;
 import com.sparta.admin.entity.UserRoleEnum;
 import com.sparta.admin.service.lecture.LectureService;
 import lombok.RequiredArgsConstructor;
@@ -44,8 +45,10 @@ public class LectureController {
     }
 
     @GetMapping
-    public ResponseEntity<List<LectureInfoResponseDto>> getLecturesByCategory(@RequestParam String category) {
-        List<LectureInfoResponseDto> responseDtos = lectureService.getLecturesByCategory(category);
+    public ResponseEntity<List<LectureInfoResponseDto>> getLecturesByCategory(@RequestParam("category") String categoryName) {
+        LectureCategoryEnum lectureCategory = LectureCategoryEnum.convertStringToCategory(categoryName);
+
+        List<LectureInfoResponseDto> responseDtos = lectureService.getLecturesByCategory(lectureCategory);
 
         return ResponseEntity.status(HttpStatus.OK).body(responseDtos);
     }

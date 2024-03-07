@@ -1,6 +1,7 @@
 package com.sparta.admin.service.lecture;
 
 import com.sparta.admin.dto.lecture.*;
+import com.sparta.admin.entity.LectureCategoryEnum;
 
 import java.util.List;
 
@@ -11,6 +12,6 @@ public interface LectureService {
 
     LectureInfoResponseDto getLecture(Long id);
 
-    List<LectureInfoResponseDto> getLecturesByCategory(String category);
+    List<LectureInfoResponseDto> getLecturesByCategory(LectureCategoryEnum category);
 
 }

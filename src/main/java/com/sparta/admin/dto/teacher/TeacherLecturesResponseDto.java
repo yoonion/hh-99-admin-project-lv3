@@ -24,7 +24,7 @@ public class TeacherLecturesResponseDto {
         this.title = lecture.getTitle();
         this.introduction = lecture.getIntroduction();
         this.price = lecture.getPrice();
-        this.category = lecture.getCategory();
+        this.category = lecture.getCategory().getCategoryName();
         this.createAt = lecture.getCreatedAt();
     }
 }

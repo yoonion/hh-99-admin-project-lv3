@@ -24,7 +24,7 @@ public class LectureInfoResponseDto {
         this.title = lecture.getTitle();
         this.price = lecture.getPrice();
         this.introduction = lecture.getIntroduction();
-        this.category = lecture.getCategory();
+        this.category = lecture.getCategory().getCategoryName();
         this.createdAt = lecture.getCreatedAt();
     }
 }

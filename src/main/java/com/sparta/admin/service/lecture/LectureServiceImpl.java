@@ -2,6 +2,7 @@ package com.sparta.admin.service.lecture;
 
 import com.sparta.admin.dto.lecture.*;
 import com.sparta.admin.entity.Lecture;
+import com.sparta.admin.entity.LectureCategoryEnum;
 import com.sparta.admin.entity.Teacher;
 import com.sparta.admin.repository.LectureRepository;
 import com.sparta.admin.repository.TeacherRepository;
@@ -52,7 +53,7 @@ public class LectureServiceImpl implements LectureService {
     }
 
     @Override
-    public List<LectureInfoResponseDto> getLecturesByCategory(String category) {
+    public List<LectureInfoResponseDto> getLecturesByCategory(LectureCategoryEnum category) {
         return lectureRepository.findAllByCategoryOrderByCreatedAtDesc(category)
                 .stream()
                 .map(LectureInfoResponseDto::new)

@@ -10,6 +10,8 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 
+import static com.sparta.admin.entity.LectureCategoryEnum.convertStringToCategory;
+
 @Entity
 @NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
@@ -26,7 +28,9 @@ public class Lecture {
     private String title;
     private int price;
     private String introduction;
-    private String category;
+
+    @Enumerated(value = EnumType.STRING)
+    private LectureCategoryEnum category;
 
     @CreatedDate
     @Column(updatable = false)
@@ -38,13 +42,13 @@ public class Lecture {
         this.title = requestDto.getTitle();
         this.price = requestDto.getPrice();
         this.introduction = requestDto.getIntroduction();
-        this.category = requestDto.getCategory();
+        this.category = convertStringToCategory(requestDto.getCategory());
     }
 
     public void update(LectureUpdateRequestDto requestDto) {
         this.title = requestDto.getTitle();
         this.price = requestDto.getPrice();
         this.introduction = requestDto.getIntroduction();
-        this.category = requestDto.getCategory();
+        this.category = convertStringToCategory(requestDto.getCategory());
     }
 }
