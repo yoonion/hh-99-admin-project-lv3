@@ -19,7 +19,6 @@ public class LectureController {
 
     private final LectureService lectureService;
 
-    @Secured(UserRoleEnum.Authority.MANAGER)
     @PostMapping
     public ResponseEntity<LectureRegisterResponseDto> registerLecture(@RequestBody LectureRegisterRequestDto requestDto) {
         LectureRegisterResponseDto responseDto = lectureService.registerLecture(requestDto);

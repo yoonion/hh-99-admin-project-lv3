@@ -1,6 +1,7 @@
 package com.sparta.admin.service.lecture;
 
 import com.sparta.admin.dto.lecture.*;
+import com.sparta.admin.dto.teacher.TeacherLecturesResponseDto;
 import com.sparta.admin.entity.lecture.Lecture;
 import com.sparta.admin.entity.lecture.LectureCategoryEnum;
 import com.sparta.admin.entity.teacher.Teacher;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 @RequiredArgsConstructor
@@ -25,7 +27,7 @@ public class LectureServiceImpl implements LectureService {
     public LectureRegisterResponseDto registerLecture(LectureRegisterRequestDto requestDto) {
         Long teacherId = requestDto.getTeacherId();
         Teacher findTeacher = teacherRepository.findById(teacherId)
-                .orElseThrow(() -> new IllegalArgumentException("해당 강사가 존재하지 않습니다."));
+                .orElseThrow(() -> new NoSuchElementException("해당 강사가 존재하지 않습니다."));
 
         Lecture lecture = new Lecture(findTeacher, requestDto);
         lectureRepository.save(lecture);
@@ -37,7 +39,7 @@ public class LectureServiceImpl implements LectureService {
     @Transactional
     public LectureUpdateResponseDto updateLecture(Long id, LectureUpdateRequestDto requestDto) {
         Lecture lecture = lectureRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("수정할 강의 정보가 존재하지 않습니다."));
+                .orElseThrow(() -> new NoSuchElementException("수정할 강의 정보가 존재하지 않습니다."));
 
         lecture.update(requestDto);
 
@@ -47,15 +49,19 @@ public class LectureServiceImpl implements LectureService {
     @Override
     public LectureInfoResponseDto getLecture(Long id) {
         Lecture lecture = lectureRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("해당 강의 정보가 존재하지 않습니다."));
+                .orElseThrow(() -> new NoSuchElementException("해당 강의 정보가 존재하지 않습니다."));
 
         return new LectureInfoResponseDto(lecture);
     }
 
     @Override
     public List<LectureInfoResponseDto> getLecturesByCategory(LectureCategoryEnum category) {
-        return lectureRepository.findAllByCategoryOrderByCreatedAtDesc(category)
-                .stream()
+        List<Lecture> lectures = lectureRepository.findAllByCategoryOrderByCreatedAtDesc(category);
+        if (lectures.isEmpty()) {
+            throw new NoSuchElementException("해당 강의 정보가 없습니다.");
+        }
+
+        return lectures.stream()
                 .map(LectureInfoResponseDto::new)
                 .toList();
     }

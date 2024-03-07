@@ -19,7 +19,6 @@ public class TeacherController {
 
     private final TeacherService teacherService;
 
-    @Secured(UserRoleEnum.Authority.MANAGER)
     @PostMapping
     public ResponseEntity<TeacherRegisterResponseDto> registerTeacher(@RequestBody @Valid TeacherRegisterRequestDto requestDto) {
         TeacherRegisterResponseDto responseDto = teacherService.registerTeacher(requestDto);
