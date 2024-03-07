@@ -15,6 +15,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 @Slf4j(topic = "로그인 및 JWT 생성")
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
@@ -61,11 +62,29 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
         String token = jwtUtils.createToken(username, role);
         jwtUtils.addJwtToCookie(token, response);
+
+        // 성공 response 반환
+        response.setStatus(HttpServletResponse.SC_OK);
+        response.setContentType("application/json;charset=UTF-8");
+
+        String successMessage = "{\"message\": \"로그인 인증에 성공했습니다.\"}";
+        PrintWriter writer = response.getWriter();
+        writer.print(successMessage);
+        writer.flush();
     }
 
     @Override
     protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response, AuthenticationException failed) throws IOException, ServletException {
         log.info("로그인 실패");
+
+        // 로그인 실패 response 반환
         response.setStatus(401);
+        response.setStatus(HttpServletResponse.SC_OK);
+        response.setContentType("application/json;charset=UTF-8");
+
+        String failMessage = "{\"message\": \"로그인 인증에 실패 했습니다. 아이디와 비밀번호를 확인해주세요\"}";
+        PrintWriter writer = response.getWriter();
+        writer.print(failMessage);
+        writer.flush();
     }
 }
