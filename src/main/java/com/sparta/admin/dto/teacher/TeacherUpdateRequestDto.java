@@ -3,6 +3,7 @@ package com.sparta.admin.dto.teacher;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 
 @Getter
@@ -11,8 +12,8 @@ public class TeacherUpdateRequestDto {
     @NotBlank
     private String name;
 
-    @NotBlank
-    private String career;
+    @NotNull
+    private int career;
 
     @NotBlank
     private String company;

@@ -15,7 +15,7 @@ public class Teacher {
     @Column(name = "teacher_id")
     private Long id;
     private String name;
-    private String career;
+    private int career;
     private String company;
     private String phoneNumber;
     private String introduction;

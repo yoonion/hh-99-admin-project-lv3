@@ -9,7 +9,7 @@ import lombok.Getter;
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class TeacherRegisterResponseDto {
     private final String name;
-    private final String career;
+    private final int career;
     private final String company;
     private final String phoneNumber;
     private final String introduction;

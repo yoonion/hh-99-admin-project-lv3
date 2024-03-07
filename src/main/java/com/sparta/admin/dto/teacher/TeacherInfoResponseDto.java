@@ -10,7 +10,7 @@ import lombok.Getter;
 public class TeacherInfoResponseDto {
     private final Long id;
     private final String name;
-    private final String career;
+    private final int career;
     private final String company;
     private final String phoneNumber;
     private final String introduction;
