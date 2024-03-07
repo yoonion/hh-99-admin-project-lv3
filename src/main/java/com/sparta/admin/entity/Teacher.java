@@ -17,10 +17,20 @@ public class Teacher {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "teacher_id")
     private Long id;
+
+    @Column(nullable = false)
     private String name;
+
+    @Column(nullable = false)
     private int career;
+
+    @Column(nullable = false)
     private String company;
+
+    @Column(nullable = false)
     private String phoneNumber;
+
+    @Column(nullable = false)
     private String introduction;
 
     // Teacher 는 연관 관계의 주인이 아니다.

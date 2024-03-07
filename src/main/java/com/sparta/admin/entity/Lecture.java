@@ -28,8 +28,14 @@ public class Lecture {
     @ManyToOne
     @JoinColumn(name = "teacher_id")
     private Teacher teacher;
+
+    @Column(nullable = false)
     private String title;
+
+    @Column(nullable = false)
     private int price;
+
+    @Column(nullable = false)
     private String introduction;
 
     @Enumerated(value = EnumType.STRING)
