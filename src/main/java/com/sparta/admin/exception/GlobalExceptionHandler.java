@@ -43,7 +43,7 @@ public class GlobalExceptionHandler {
 
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
-                .body(new ErrorResponse(HttpServletResponse.SC_BAD_REQUEST, fieldError.getDefaultMessage()));
+                .body(new ErrorResponse(HttpStatus.BAD_REQUEST.value(), fieldError.getDefaultMessage()));
     }
 
     @ExceptionHandler(Exception.class)

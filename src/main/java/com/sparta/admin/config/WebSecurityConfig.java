@@ -3,7 +3,7 @@ package com.sparta.admin.config;
 import com.sparta.admin.jwt.JwtAuthenticationFilter;
 import com.sparta.admin.jwt.JwtAuthorizationFilter;
 import com.sparta.admin.jwt.JwtUtils;
-import com.sparta.admin.entity.security.UserDetailsServiceImpl;
+import com.sparta.admin.entity.user.security.UserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;

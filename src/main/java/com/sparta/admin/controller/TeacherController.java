@@ -1,9 +1,7 @@
 package com.sparta.admin.controller;
 
-import com.sparta.admin.dto.lecture.LectureDeleteResponseDto;
 import com.sparta.admin.dto.teacher.*;
-import com.sparta.admin.dto.teacher.TeacherUpdateRequestDto;
-import com.sparta.admin.entity.UserRoleEnum;
+import com.sparta.admin.entity.user.UserRoleEnum;
 import com.sparta.admin.service.teacher.TeacherService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

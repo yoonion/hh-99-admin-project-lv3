@@ -1,7 +1,7 @@
 package com.sparta.admin.service.lecture;
 
 import com.sparta.admin.dto.lecture.*;
-import com.sparta.admin.entity.LectureCategoryEnum;
+import com.sparta.admin.entity.lecture.LectureCategoryEnum;
 
 import java.util.List;
 

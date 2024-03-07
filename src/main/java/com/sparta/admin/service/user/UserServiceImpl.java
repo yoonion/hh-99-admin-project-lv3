@@ -2,8 +2,8 @@ package com.sparta.admin.service.user;
 
 import com.sparta.admin.dto.user.UserSignUpRequestDto;
 import com.sparta.admin.dto.user.UserSignUpResponseDto;
-import com.sparta.admin.entity.User;
-import com.sparta.admin.entity.UserRoleEnum;
+import com.sparta.admin.entity.user.User;
+import com.sparta.admin.entity.user.UserRoleEnum;
 import com.sparta.admin.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;

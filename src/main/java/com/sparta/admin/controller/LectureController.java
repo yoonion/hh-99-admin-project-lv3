@@ -1,8 +1,8 @@
 package com.sparta.admin.controller;
 
 import com.sparta.admin.dto.lecture.*;
-import com.sparta.admin.entity.LectureCategoryEnum;
-import com.sparta.admin.entity.UserRoleEnum;
+import com.sparta.admin.entity.lecture.LectureCategoryEnum;
+import com.sparta.admin.entity.user.UserRoleEnum;
 import com.sparta.admin.service.lecture.LectureService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

@@ -2,7 +2,7 @@ package com.sparta.admin.dto.teacher;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import com.sparta.admin.entity.Lecture;
+import com.sparta.admin.entity.lecture.Lecture;
 import lombok.Getter;
 
 import java.time.LocalDateTime;

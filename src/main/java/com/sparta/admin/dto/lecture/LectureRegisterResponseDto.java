@@ -1,6 +1,6 @@
 package com.sparta.admin.dto.lecture;
 
-import com.sparta.admin.entity.Lecture;
+import com.sparta.admin.entity.lecture.Lecture;
 import lombok.Getter;
 
 @Getter

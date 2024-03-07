@@ -1,10 +1,10 @@
 package com.sparta.admin.dto.lecture;
 
-import com.sparta.admin.entity.Lecture;
-import com.sparta.admin.entity.LectureCategoryEnum;
+import com.sparta.admin.entity.lecture.Lecture;
+import com.sparta.admin.entity.lecture.LectureCategoryEnum;
 import lombok.Getter;
 
-import static com.sparta.admin.entity.LectureCategoryEnum.convertStringToCategory;
+import static com.sparta.admin.entity.lecture.LectureCategoryEnum.convertStringToCategory;
 
 
 @Getter

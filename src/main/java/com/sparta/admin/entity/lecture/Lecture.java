@@ -1,7 +1,8 @@
-package com.sparta.admin.entity;
+package com.sparta.admin.entity.lecture;
 
 import com.sparta.admin.dto.lecture.LectureRegisterRequestDto;
 import com.sparta.admin.dto.lecture.LectureUpdateRequestDto;
+import com.sparta.admin.entity.teacher.Teacher;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,7 +11,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 
-import static com.sparta.admin.entity.LectureCategoryEnum.convertStringToCategory;
+import static com.sparta.admin.entity.lecture.LectureCategoryEnum.convertStringToCategory;
 
 @Entity
 @NoArgsConstructor

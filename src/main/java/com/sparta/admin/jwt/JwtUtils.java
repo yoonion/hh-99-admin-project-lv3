@@ -1,7 +1,7 @@
 package com.sparta.admin.jwt;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sparta.admin.entity.UserRoleEnum;
+import com.sparta.admin.entity.user.UserRoleEnum;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;

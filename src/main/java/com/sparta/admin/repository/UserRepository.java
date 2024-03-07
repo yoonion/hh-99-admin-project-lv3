@@ -1,6 +1,6 @@
 package com.sparta.admin.repository;
 
-import com.sparta.admin.entity.User;
+import com.sparta.admin.entity.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

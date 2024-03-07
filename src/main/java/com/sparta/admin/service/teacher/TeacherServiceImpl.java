@@ -1,7 +1,7 @@
 package com.sparta.admin.service.teacher;
 
 import com.sparta.admin.dto.teacher.*;
-import com.sparta.admin.entity.Teacher;
+import com.sparta.admin.entity.teacher.Teacher;
 import com.sparta.admin.repository.LectureRepository;
 import com.sparta.admin.repository.TeacherRepository;
 import lombok.RequiredArgsConstructor;

@@ -1,9 +1,9 @@
 package com.sparta.admin.service.lecture;
 
 import com.sparta.admin.dto.lecture.*;
-import com.sparta.admin.entity.Lecture;
-import com.sparta.admin.entity.LectureCategoryEnum;
-import com.sparta.admin.entity.Teacher;
+import com.sparta.admin.entity.lecture.Lecture;
+import com.sparta.admin.entity.lecture.LectureCategoryEnum;
+import com.sparta.admin.entity.teacher.Teacher;
 import com.sparta.admin.repository.LectureRepository;
 import com.sparta.admin.repository.TeacherRepository;
 import lombok.RequiredArgsConstructor;

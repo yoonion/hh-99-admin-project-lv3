@@ -1,4 +1,4 @@
-package com.sparta.admin.entity;
+package com.sparta.admin.entity.lecture;
 
 import lombok.Getter;
 

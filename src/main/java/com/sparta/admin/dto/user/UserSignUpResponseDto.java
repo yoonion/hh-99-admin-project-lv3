@@ -1,7 +1,7 @@
 package com.sparta.admin.dto.user;
 
-import com.sparta.admin.entity.User;
-import com.sparta.admin.entity.UserRoleEnum;
+import com.sparta.admin.entity.user.User;
+import com.sparta.admin.entity.user.UserRoleEnum;
 import lombok.Getter;
 
 @Getter

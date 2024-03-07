@@ -1,6 +1,6 @@
-package com.sparta.admin.entity.security;
+package com.sparta.admin.entity.user.security;
 
-import com.sparta.admin.entity.User;
+import com.sparta.admin.entity.user.User;
 import com.sparta.admin.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;

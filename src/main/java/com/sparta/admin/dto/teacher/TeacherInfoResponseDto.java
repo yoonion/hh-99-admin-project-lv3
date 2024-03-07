@@ -2,7 +2,7 @@ package com.sparta.admin.dto.teacher;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import com.sparta.admin.entity.Teacher;
+import com.sparta.admin.entity.teacher.Teacher;
 import lombok.Getter;
 
 @Getter
