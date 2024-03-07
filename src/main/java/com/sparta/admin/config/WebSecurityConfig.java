@@ -13,6 +13,7 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
@@ -23,7 +24,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @RequiredArgsConstructor
 public class WebSecurityConfig {
 
-    private final JwtUtils JwtUtils;
+    private final JwtUtils jwtUtils;
     private final UserDetailsServiceImpl userDetailsService;
     private final AuthenticationConfiguration authenticationConfiguration; // Authentication 매니저 만들거임 이거로
 
@@ -36,7 +37,7 @@ public class WebSecurityConfig {
     // 인증(Authentication) 필터 생성 메서드
     @Bean
     public JwtAuthenticationFilter jwtAuthenticationFilter() throws Exception {
-        JwtAuthenticationFilter filter = new JwtAuthenticationFilter(JwtUtils);
+        JwtAuthenticationFilter filter = new JwtAuthenticationFilter(jwtUtils);
         filter.setAuthenticationManager(authenticationManager(authenticationConfiguration)); // 매니저 세팅
         return filter;
     }
@@ -44,13 +45,15 @@ public class WebSecurityConfig {
     // 인가(Authorization) 필터 생성 메서드
     @Bean
     public JwtAuthorizationFilter jwtAuthorizationFilter() {
-        return new JwtAuthorizationFilter(JwtUtils, userDetailsService);
+        return new JwtAuthorizationFilter(jwtUtils, userDetailsService);
     }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         // CSRF 설정
-        http.csrf((csrf) -> csrf.disable());
+        http.csrf(AbstractHttpConfigurer::disable);
+        // formLogin disable
+        http.formLogin(AbstractHttpConfigurer::disable);
 
         // 기본 설정인 Session 방식은 사용하지 않고 JWT 방식을 사용하기 위한 설정
         http.sessionManagement((sessionManagement) ->

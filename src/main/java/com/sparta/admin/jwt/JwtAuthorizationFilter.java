@@ -22,30 +22,30 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
 
     // OncePerRequestFilter -> HttpServletRequest / HttpServletResponse 받아 올 수 있음
 
-    private final JwtUtils JwtUtils;
+    private final JwtUtils jwtUtils;
     private final UserDetailsServiceImpl userDetailsService;
 
     public JwtAuthorizationFilter(JwtUtils jwtUtil, UserDetailsServiceImpl userDetailsService) {
-        this.JwtUtils = jwtUtil;
+        this.jwtUtils = jwtUtil;
         this.userDetailsService = userDetailsService;
     }
 
     @Override
     protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain filterChain) throws ServletException, IOException {
 
-        String tokenValue = JwtUtils.getTokenFromRequest(req);
+        String tokenValue = jwtUtils.getTokenFromRequest(req);
 
         if (StringUtils.hasText(tokenValue)) {
             // JWT 토큰 substring
-            tokenValue = JwtUtils.substringToken(tokenValue);
+            tokenValue = jwtUtils.substringToken(tokenValue);
             log.info(tokenValue);
 
-            if (!JwtUtils.validateToken(tokenValue)) {
+            if (!jwtUtils.validateToken(tokenValue)) {
                 log.error("Token Error");
                 return;
             }
 
-            Claims info = JwtUtils.getUserInfoFromToken(tokenValue);
+            Claims info = jwtUtils.getUserInfoFromToken(tokenValue);
 
             try {
                 setAuthentication(info.getSubject());
