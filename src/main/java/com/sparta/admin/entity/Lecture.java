@@ -22,6 +22,9 @@ public class Lecture {
     @Column(name = "lecture_id")
     private Long id;
 
+    // 연관 관계의 주인은 Lecture 이다.
+    // 데이터 베이스 테이블의 다대일, 일대다 관계에서는 '다(Many)' 쪽이 외래 키를 갖기 때문에 @ManyToOne가 항상 연관관계의 주인이된다.
+    // 따라서 mappedBy 속성 또한 없다.
     @ManyToOne
     @JoinColumn(name = "teacher_id")
     private Teacher teacher;

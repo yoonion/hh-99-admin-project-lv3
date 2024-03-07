@@ -17,7 +17,7 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping
-    public ResponseEntity<?> signUp(@RequestBody @Valid UserSignUpRequestDto requestDto) {
+    public ResponseEntity<UserSignUpResponseDto> signUp(@RequestBody @Valid UserSignUpRequestDto requestDto) {
         UserSignUpResponseDto userSignUpResponseDto = userService.signUp(requestDto);
 
         return ResponseEntity.status(HttpStatus.OK).body(userSignUpResponseDto);

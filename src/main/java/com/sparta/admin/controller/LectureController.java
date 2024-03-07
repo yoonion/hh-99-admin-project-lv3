@@ -55,10 +55,8 @@ public class LectureController {
 
     @Secured(UserRoleEnum.Authority.MANAGER)
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteLecture(@PathVariable Long id) {
-        lectureService.deleteLecture(id);
-        LectureDeleteResponseDto responseDto = new LectureDeleteResponseDto(id);
-
+    public ResponseEntity<LectureDeleteResponseDto> deleteLecture(@PathVariable Long id) {
+        LectureDeleteResponseDto responseDto = lectureService.deleteLecture(id);
         return ResponseEntity.status(HttpStatus.OK).body(responseDto);
     }
 }

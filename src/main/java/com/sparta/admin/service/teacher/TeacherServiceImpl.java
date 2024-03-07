@@ -52,4 +52,11 @@ public class TeacherServiceImpl implements TeacherService {
                 .map(TeacherLecturesResponseDto::new)
                 .toList();
     }
+
+    @Override
+    @Transactional
+    public TeacherDeleteResponseDto deleteTeacher(Long id) {
+        teacherRepository.deleteById(id);
+        return new TeacherDeleteResponseDto(id);
+    }
 }

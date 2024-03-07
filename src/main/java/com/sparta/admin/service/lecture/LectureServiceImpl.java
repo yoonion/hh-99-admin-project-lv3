@@ -62,8 +62,8 @@ public class LectureServiceImpl implements LectureService {
 
     @Override
     @Transactional
-    public Long deleteLecture(Long id) {
+    public LectureDeleteResponseDto deleteLecture(Long id) {
         lectureRepository.deleteById(id);
-        return id;
+        return new LectureDeleteResponseDto(id);
     }
 }

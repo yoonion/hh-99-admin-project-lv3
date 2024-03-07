@@ -1,5 +1,6 @@
 package com.sparta.admin.service.teacher;
 
+import com.sparta.admin.dto.lecture.LectureDeleteResponseDto;
 import com.sparta.admin.dto.teacher.*;
 
 import java.util.List;
@@ -12,4 +13,6 @@ public interface TeacherService {
     TeacherInfoResponseDto getTeacher(Long id);
 
     List<TeacherLecturesResponseDto> getTeacherLectures(Long id);
+
+    TeacherDeleteResponseDto deleteTeacher(Long id);
 }

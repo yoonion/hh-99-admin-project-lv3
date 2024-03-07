@@ -1,5 +1,6 @@
 package com.sparta.admin.controller;
 
+import com.sparta.admin.dto.lecture.LectureDeleteResponseDto;
 import com.sparta.admin.dto.teacher.*;
 import com.sparta.admin.dto.teacher.TeacherUpdateRequestDto;
 import com.sparta.admin.entity.UserRoleEnum;
@@ -50,5 +51,13 @@ public class TeacherController {
         List<TeacherLecturesResponseDto> teacherLectures = teacherService.getTeacherLectures(id);
 
         return ResponseEntity.status(HttpStatus.OK).body(teacherLectures);
+    }
+
+    @Secured(UserRoleEnum.Authority.MANAGER)
+    @DeleteMapping("/{id}")
+    public ResponseEntity<TeacherDeleteResponseDto> deleteTeacher(@PathVariable Long id) {
+        TeacherDeleteResponseDto teacherDeleteResponseDto = teacherService.deleteTeacher(id);
+
+        return ResponseEntity.status(HttpStatus.OK).body(teacherDeleteResponseDto);
     }
 }

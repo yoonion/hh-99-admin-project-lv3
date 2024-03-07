@@ -63,7 +63,9 @@ public class WebSecurityConfig {
         http.authorizeHttpRequests((authorizeHttpRequests) ->
                 authorizeHttpRequests
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll() // resources 접근 허용 설정
-                        .requestMatchers("/users/**").permitAll() // '/users/'로 시작하는 요청 모두 접근 허가
+                        // '/users/'로 시작하는 요청 모두 접근 허가 --> 쿠키가 없을 때는 잘 진행 되는데,
+                        // 유효하지 않은 쿠키가 헤더에 들어있는 경우, 허용한 URL 임에도 불구하고 인가에서 걸린다? 왜?
+                        .requestMatchers("/users/**").permitAll()
                         .anyRequest().authenticated() // 그 외 모든 요청 인증처리
         );
 
