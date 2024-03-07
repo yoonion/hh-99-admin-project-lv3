@@ -9,9 +9,18 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-@Slf4j(topic = "GlobalExceptionHandler 예외 처리")
+@Slf4j(topic = "GlobalExceptionHandler - 예외 처리")
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<ErrorResponse> handleValidationExceptions(IllegalArgumentException ex) {
+        log.info("IllegalArgumentException 진입");
+
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(new ErrorResponse(HttpStatus.BAD_REQUEST.value(), ex.getMessage()));
+    }
 
     // bean validation exception
     @ExceptionHandler(MethodArgumentNotValidException.class)
