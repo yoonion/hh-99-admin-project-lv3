@@ -2,6 +2,7 @@
 
 ## 📝 개요
 - 강의 관리자 백오피스 RESTful API 개발 과제입니다.
+- Spring Security + JWT 로그인 으로 인증 & 인가 로직을 비즈니스 로직과 분리
 ---
 
 ### 🛠️ Stack
@@ -22,7 +23,7 @@
 
 ### API 명세서 (Postman)
 - Postman API Document 입니다.
-- https://documenter.getpostman.com/view/28420346/2sA2xfXszF#659ec8d5-65a7-447d-a8f3-4ca8eec7613d
+- https://documenter.getpostman.com/view/28420346/2sA2xfXszF
 
 ---
 
